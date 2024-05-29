@@ -8,7 +8,7 @@ namespace FanControl.Liquidctl
 {
     internal static class LiquidctlCLIWrapper
     {
-        public static string liquidctlexe = "Plugins\\liquidctl.exe"; //TODO extract path to executable to config
+        public static string liquidctlexe = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "liquidctl.exe");   // This should always resolve to the same directory as the FanControl.Liquidctl.dll //TODO extract path to executable to config
         internal static void Initialize()
         {
             LiquidctlCall($"--json initialize all");
