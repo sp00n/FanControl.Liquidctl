@@ -1,5 +1,14 @@
 # FanControl.Liquidctl
 
+
+## Mod by sp00n
+I tried to add support for fan controllers that return multiple fan entries (e.g. "Fan 1 speed", "Fan 2 speed", etc), so that controllers like the ones from NZXT are supported.
+I probably violated a dozen of best practices for C# in doing so, but it appears to be working for me.
+
+
+
+## Original description
+
 This is a simple plugin that uses [liquidctl](https://github.com/liquidctl/liquidctl) to provide sensor data and pump control to variety of AIOs. So far it is tested with NZXT Kraken X63, but in principle shall work with [supported devices](https://github.com/liquidctl/liquidctl#supported-devices)
 
 ## Installation
