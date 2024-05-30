@@ -12,7 +12,8 @@ namespace FanControl.Liquidctl
 {
     internal static class LiquidctlCLIWrapper
     {
-        public static string liquidctlexe = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "liquidctl.exe");   // This should always resolve to the same directory as the FanControl.Liquidctl.dll //TODO extract path to executable to config
+        public static string liquidctlexe = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "liquidctl.exe");   // This should always resolve to the same directory as the FanControl.Liquidctl.dll
+                                                                                                                                                                // TODO: extract path to executable to config(?) - Seems to work fine now though
         internal static IPluginLogger logger;
 
         internal static void Initialize(IPluginLogger pluginLogger)
@@ -25,14 +26,12 @@ namespace FanControl.Liquidctl
         internal static List<LiquidctlStatusJSON> ReadStatus()
         {
             Process process = LiquidctlCall($"--json status");
-            //return JsonConvert.DeserializeObject<List<LiquidctlStatusJSON>>(process.StandardOutput.ReadToEnd());
             return ParseStatuses(process.StandardOutput.ReadToEnd());
         }
 
         internal static List<LiquidctlStatusJSON> ReadStatus(string address)
         {
             Process process = LiquidctlCall($"--json --address {address} status");
-            //return JsonConvert.DeserializeObject<List<LiquidctlStatusJSON>>(process.StandardOutput.ReadToEnd());
             return ParseStatuses(process.StandardOutput.ReadToEnd());
         }
 
